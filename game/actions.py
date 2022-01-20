@@ -1,3 +1,5 @@
+from deck import deck
+
 class Actions:
     def __init__(self):
         """"""
@@ -8,4 +10,6 @@ class Actions:
     def split(self):
         """"""
     def double_down(self):
+        """"""
+    def bust(self):
         """"""
