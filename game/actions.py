@@ -1,14 +1,15 @@
-from deck import deck
+from game.deck import deck
 
 class Actions(deck):
     """"""
     def __init__(self):
         """"""
+        self.deck = deck()
     def stand(self, points, bet):
         """"""
-        while deck.dealer_total <= 16:
-            deck.dealerHit()
-            deck.dealerScore()
+        while self.deck.dealer_total <= 16:
+            self.deck.dealerHit()
+            self.deck.dealerScore()
         if self.dealer_bust():
             if self.bust() and self.bust2():
                 print("All have gone bust, no bets were lost.")
@@ -27,7 +28,7 @@ class Actions(deck):
         deck.hitCard()
         deck.getScore()
         self.bust()
-        if len(deck.current_deck) == 0:
+        if len(self.deck.current_deck) == 0:
             deck.create_deck()
 
     def hit2(self):
@@ -35,7 +36,7 @@ class Actions(deck):
         deck.hitCard2()
         deck.hand2Score()
         self.bust2()
-        if len(deck.current_deck) == 0:
+        if len(self.deck.current_deck) == 0:
             deck.create_deck()
 
     def hit_d(self):
@@ -43,14 +44,14 @@ class Actions(deck):
         deck.dealerHit()
         deck.dealerScore()
         self.dealer_bust()
-        if len(deck.current_deck) == 0:
+        if len(self.deck.current_deck) == 0:
             deck.create_deck()
 
     def split(self, points, bet):
         """"""
-        if (deck.hand[0] == deck.hand[1]) and (bet*2) <= points:
+        if (self.deck.hand[0] == self.deck.hand[1]) and (bet*2) <= points:
             self.split_input = input("Would you like to split your hand? [y/n]: ").lower()
-            deck.hand2.append(deck.hand.pop(-1))
+            self.deck.hand2.append(self.deck.hand.pop(-1))
             bet *= 2
             return bet
         else: 
@@ -77,17 +78,17 @@ class Actions(deck):
 
     def bust(self):
         """"""
-        if deck.total > 21:
+        if self.deck.total > 21:
             return True
         return False
 
     def bust2(self):
         """"""
-        if deck.total2 > 21:
+        if self.deck.total2 > 21:
             return True
         return False
 
     def dealer_bust(self):
-        if deck.dealer_total > 21:
+        if self.deck.dealer_total > 21:
             return True
         return False

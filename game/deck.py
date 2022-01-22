@@ -11,6 +11,7 @@ class deck:
         self.total2 = 0
         self.dealer_hand = []
         self.dealer_total = 0
+        self.create_deck()
 
     def playable(self, points):
         if(points <= 0):
@@ -47,7 +48,7 @@ class deck:
 
     def create_deck(self):
         new_deck = [11,11,11,11,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]
-        new_deck = random.shuffle(new_deck)
+        random.shuffle(new_deck)
         self.current_deck = new_deck
 
     def hitCard(self):

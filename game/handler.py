@@ -1,13 +1,13 @@
-from argparse import Action
-from actions import Actions
-from deck import deck
+from game.actions import Actions
+from game.deck import deck
 
-class Handler:
+class Handler():
     """"""
     def __init__(self):
         self.keep_playing = True
         self.points = 300
         self.bet = 0
+        self.decks = deck()
 
     def start_game(self):
         """"""
@@ -21,12 +21,12 @@ class Handler:
             if self.bet > self.points or self.bet == 0:
                 print("Invalid bet amount.")
         choice = "z"
-        if len(deck.hand2) == 0:
+        if len(self.decks.hand2) == 0:
             while choice not in ["stand", "hit", "split", "double down"]:
                 choice = input("Would you like to hit, stand, double down, or split? ").lower()
             self._updates(choice)
         else:
-            print("Your Hands: " + deck.hand + " " + deck.hand2)
+            print("Your Hands: " + self.decks.hand + " " + self.decks.hand2)
             while choice not in ["stand", "hit", "split", "double down"]:
                 choice = input("Would you like to hit, stand, double down, or split for your first hand? ").lower()
             self._updates(choice)
@@ -69,20 +69,20 @@ class Handler:
         
         if Actions.bust():
             self.points -= self.bet
-        if len(deck.hand2) > 0:
+        if len(self.decks.hand2) > 0:
             if Actions.bust2():
                 self.points -= self.bet
 
 
     def _outputs(self):
         """"""
-        deck.hitCard
-        deck.dealerHit
-        deck.hitCard
-        deck.dealerHit
-        print("Dealer's Hand: [X," + deck.dealer_hand(-1) + "]")
-        if len(deck.hand2) == 0:
-            print("Your Hand: " + deck.hand)
+        self.decks.hitCard()
+        self.decks.dealerHit()
+        self.decks.hitCard()
+        self.decks.dealerHit()
+        print("Dealer's Hand: [X," + str(self.decks.dealer_hand[-1]) + "]")
+        if len(self.decks.hand2) == 0:
+            print("Your Hand: " + str(self.decks.hand))
         else:
-            print("Your Hands: " + deck.hand + " " + deck.hand2)
+            print("Your Hands: " + str(self.decks.hand) + " " + str(self.decks.hand2))
         self._get_inputs()
