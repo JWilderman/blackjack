@@ -1,12 +1,14 @@
 import random
 
 class deck:
+    """"""
     def __init__(self):
         """"""
         self.hand = []
         self.hand2 = []
         self.current_deck = []
         self.total = 0
+        self.total2 = 0
         self.dealer_hand = []
         self.dealer_total = 0
 
@@ -24,6 +26,15 @@ class deck:
             if item == 11:
                 if self.total > 21:
                     self.total -= 10
+
+    def hand2Score(self):
+        self.total2 = 0
+        for item in self.hand2:
+            self.total2 += item
+        for item in self.hand2:
+            if item == 11:
+                if self.total2 > 21:
+                    self.total2 -= 10
     
     def dealerScore(self):
         self.dealer_total = 0
@@ -42,5 +53,8 @@ class deck:
     def hitCard(self):
         self.hand.append(self.current_deck[-1])
 
+    def hitCard2(self):
+        self.hand2.append(self.current_deck[-1])
+
     def dealerHit(self):
-        self.dealer_total.append(self.current_deck[-1])
+        self.dealer_hand.append(self.current_deck[-1])
