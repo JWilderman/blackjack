@@ -52,10 +52,10 @@ class deck:
         self.current_deck = new_deck
 
     def hitCard(self):
-        self.hand.append(self.current_deck[-1])
+        self.hand.append(self.current_deck.pop())
 
     def hitCard2(self):
-        self.hand2.append(self.current_deck[-1])
+        self.hand2.append(self.current_deck.pop())
 
     def dealerHit(self):
-        self.dealer_hand.append(self.current_deck[-1])
+        self.dealer_hand.append(self.current_deck.pop())
