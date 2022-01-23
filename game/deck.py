@@ -57,5 +57,5 @@ class deck:
     def hitCard2(self):
         self.hand2.append(self.current_deck.pop())
 
-    def dealerHit(self):
+    def dealerHit(self):.
         self.dealer_hand.append(self.current_deck.pop())
