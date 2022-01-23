@@ -13,7 +13,7 @@ It uses many of the different things that I had learned about Python, such as, c
 Visual Studio Code
 * Python extension
 
-#In this software I utilized the Python language.
+# In this software I utilized the Python language.
 Additional Libraries Used
 * random
 
