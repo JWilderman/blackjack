@@ -34,16 +34,16 @@ class Actions(deck):
                     self.points = points + (bet/2)
                     self.starting_deal()
                     return self.points
-            elif self.bust():
-                print("Player has gone bust, house wins.")
-                self.points = points - bet
-                return self.points
             else:
                 print("House has gone bust, player has won.")
                 points += bet
                 self.points = points + bet
                 self.starting_deal()
                 return self.points
+        if self.bust():
+            print("Player has gone bust, house wins.")
+            self.points = points - bet
+            return self.points
         if self.deck.dealer_total < self.deck.total:
             print("Player's hand beats house, player wins.")
             self.starting_deal()
