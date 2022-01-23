@@ -6,7 +6,7 @@ It includes most features of the actual game of Blackjack with the exception of 
 This software was written to help demonstrate my current level of mastery of the Python language.
 It uses many of the different things that I had learned about Python, such as, classes, functions, variables, data structures, etc
 
-[Software Demo Video](https://vimeo.com/669059007/ed996e8731)
+[Software Demo Video](https://youtu.be/GsWyPUkKE5s)
 
 # Development Environment
 
