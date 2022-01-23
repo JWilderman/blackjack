@@ -32,4 +32,4 @@ Additional Libraries Used
 {Make a list of things that you need to fix, improve, and add in the future.}
 * Insurance - allows players to protect their bet if the dealer shows an Ace.
 * Create a better display for the hands, possibly using the arcade python library.
-* Item 3
+* Fixing outstanding issues. The first issue I encountered was the code occasionally crashes due to the points reverting to a null value. The second issue was that the bets/loses would be double what the player originally asked. The third issue is that the game only lasts for one deck before crashing.
