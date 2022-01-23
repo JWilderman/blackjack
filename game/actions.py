@@ -25,47 +25,60 @@ class Actions(deck):
         if self.dealer_bust():
             if self.bust() and self.bust2():
                 print("All have gone bust, no bets were lost.")
+                self.points = points
                 self.starting_deal()
-                return False
-            elif (self.bust() == False and self.bust2() == True) or (self.bust() == True and self.bust2() == False):
-                print("House has gone bust, but one of the player's hands have won.")
-                points += bet/2
-                self.starting_deal()
-                return points
+                return self.points
+            elif len(self.deck.hand2) > 0:
+                if (self.bust() == False and self.bust2() == True) or (self.bust() == True and self.bust2() == False):
+                    print("House has gone bust, but one of the player's hands have won.")
+                    self.points = points + (bet/2)
+                    self.starting_deal()
+                    return self.points
+            elif self.bust():
+                print("Player has gone bust, house wins.")
+                self.points = points - bet
+                return self.points
             else:
                 print("House has gone bust, player has won.")
                 points += bet
+                self.points = points + bet
                 self.starting_deal()
-                return points
-        self.starting_deal
+                return self.points
+        if self.deck.dealer_total < self.deck.total:
+            print("Player's hand beats house, player wins.")
+            self.starting_deal()
+            return self.points + bet
+        else:
+            print("House beats player, house wins.")
+            self.starting_deal()
+            return self.points + bet
 
     def hit(self, points, bet):
         """"""
-        self.points = points
+        if len(self.deck.current_deck) == 0:
+            self.deck.create_deck()
         self.bet = bet
         self.deck.hitCard()
         self.deck.getScore()
         if self.bust():
             self.stand(self.points, self.bet)
-        if len(self.deck.current_deck) == 0:
-            self.deck.create_deck()
 
     def hit2(self, points, bet):
         """"""
+        if len(self.deck.current_deck) == 0:
+            self.deck.create_deck()
         self.deck.hitCard2()
         self.deck.hand2Score()
         if self.bust2():
             self.stand(self.points, self.bet)
-        if len(self.deck.current_deck) == 0:
-            self.deck.create_deck()
 
     def hit_d(self):
         """"""
+        if len(self.deck.current_deck) == 0:
+            self.deck.create_deck()
         self.deck.dealerHit()
         self.deck.dealerScore()
         self.dealer_bust()
-        if len(self.deck.current_deck) == 0:
-            self.deck.create_deck()
 
     def split(self, points, bet):
         """"""
