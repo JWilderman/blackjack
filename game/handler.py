@@ -11,16 +11,12 @@ class Handler():
 
     def start_game(self):
         """"""
-        self.acts.starting_deal()
         while self.points > 0:
+            self.acts.starting_deal()
             self._outputs()
             
     def _get_inputs(self):
         """"""
-        while self.bet <= 0 or self.bet > self.points:
-            self.bet = int(input("How much points would you like to bet? "))
-            if self.bet > self.points or self.bet == 0:
-                print("Invalid bet amount.")
         choice = "z"
         if len(self.acts.deck.hand2) == 0:
             while choice not in ["stand", "hit", "split", "double down"]:
@@ -74,4 +70,9 @@ class Handler():
             print("Your Hand: " + str(self.acts.deck.hand))
         else:
             print("Your Hands: " + str(self.acts.deck.hand) + " " + str(self.acts.deck.hand2))
+        print("Your total points: " + str(self.points))
+        self.bet = int(input("How much points would you like to bet? "))
+        if self.bet > self.points or self.bet == 0:
+            print("Invalid bet amount.")
+            self.bet = int(input("How much points would you like to bet? "))
         self._get_inputs()
