@@ -13,12 +13,6 @@ class deck:
         self.dealer_total = 0
         self.create_deck()
 
-    def playable(self, points):
-        if(points <= 0):
-            return False
-        else:
-            return True
-
     def getScore(self):
         self.total = 0
         for item in self.hand:
